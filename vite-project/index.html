@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ticket list Homepage" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, relysia, vite"
+    />
+    <meta name="author" content="Bendik Bjerkeset"/>
+    <link rel="stylesheet" href="./style.css"/>    
+    <script type="module" src="./src/js/index.js"></script>
+    <title>Homepage | My Tickets </title>
+    <!-- Hotjar Tracking Code for my site -->
+  </head>
+  <body class="animate__animated animate__fadeIn">
+
+    <header class="l-header">
+      <nav class="navbar__container">
+        <div class="navbar__signout">
+          <button class="button button--signout" id="sign-out-button">Sign out</button>
+        </div>
+        <div class="navbar__list">
+          <ul class="navbar__list-ul">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./mint.html">Issue</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./exchange.html">Exchange</a></li>
+          </ul>
+        </div>
+        <div class="hamburger">
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="l-main">
+      <!-- <section role="search"></section> -->
+
+      <article class="intro__article article" role="doc-introduction">
+        <h1>My Assets</h1>
+        <p>This web page is for displaying a list of tickets. The page fetches data from an API and displays the tickets in the main section. The user can filter the tickets by searching for a specific name using the search bar in the page header. The page uses the Relysia SDK to authenticate the user and fetch blockchain data from the API.</p>
+      </article>
+
+      <section class="search__section" role="search">
+        <label for="search-input">Search:</label>
+        <input type="text" id="search-input" placeholder="Enter item name...">
+      </section>
+
+      <section class="content__section" role="list">
+        <div id="js-list-container">
+        </div>
+        <div id="js-error-container">
+        </div>
+        <div id="js-loading-indicator" class="loading-indicator"></div>
+      </section>
+    </main>
+
+    <!-- <footer class="l-footer">
+      <small>Created with ❤️ by Bendik Bjerkeset</small>
+    </footer> -->
+  </body>
+</html>
+

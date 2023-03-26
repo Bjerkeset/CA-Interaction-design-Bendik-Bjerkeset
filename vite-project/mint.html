@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ticket list Homepage" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, relysia, vite"
+    />
+    <meta name="author" content="Bendik Bjerkeset" />
+    <link rel="stylesheet" href="/style.css" />    
+    <script type="module" src="./src/js/mint.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/relysia@1.0.6/dist/relysia-sdk.js"></script> -->
+    <title>Homepage | Ticket List </title>
+  </head>
+  <body class="animate__animated animate__fadeIn">
+    <header class="l-header">
+      <nav class="navbar__container">
+        <div class="navbar__signout">
+          <button class="button button--signout" id="sign-out-button">Sign out</button>
+        </div>
+        <div class="navbar__list">
+          <ul class="navbar__list-ul">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./mint.html">Issue</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./exchange.html">Exchange</a></li>
+          </ul>
+        </div>
+        <div class="hamburger">
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="l-main">
+      <section role="search"></section>
+
+      <article class="issue-description__article article" role="doc-introduction">
+        <h1>Issue Ticket</h1>
+        <p>Create and publish a ticket, which will be viewable in the "My Tickets" section. You can then transfer the ticket to another person or offer it for sale.</p>
+      </article>
+
+      <!-- <section class="search__section" role="search">
+        <label for="search-input">Search:</label>
+        <input type="text" id="search-input" placeholder="Enter item name...">
+      </section> -->
+      
+  <section class="issue-form__section">
+    <h4>Please provide your ticket details</h4>
+    
+    <form id="issueForm">
+      <label for="name">Name:</label>
+      <input type="text" value="ACDC - live at Oslo Spectrum" id="name" name="name">
+
+      <!-- <label for="protocolId">Protocol ID:</label>
+      <input type="text" id="protocolId" value="STAS" name="protocolId"> -->
+
+      <label for="symbol">Symbol:</label>
+      <input type="text" value="YE" id="symbol" name="symbol">
+
+      <label for="description"></label>
+      <textarea id="description" name="description"></textarea> 
+
+      <label for="image">Image:</label>
+      <input type="text" id="image" value="https://www.satolearn.com/media/logos/bird-xs.png" placeholder="url:" name="image">
+
+      <label for="tokenSupply">Token Supply:</label>
+      <input type="number" id="tokenSupply" value="10" name="tokenSupply">
+<!-- 
+      <label for="decimals">Decimals:</label>
+      <input type="number" id="decimals" value= "0" name="decimals">
+
+      <label for="satsPerToken">Sats Per Token:</label>
+      <input type="number" id="satsPerToken" value= "1" name="satsPerToken"> -->
+<!-- 
+      <label for="splitable">Splitable:</label>
+      <input type="checkbox" id="splitable" name="splitable">
+
+      <label for="terms">Terms:</label>
+      <input type="text" value="Your token terms and description" id="terms" name="terms"></input>
+
+      <label for="licenceId">Licence ID:</label>
+      <input type="text" value="T3ST-2" id="licenceId" name="licenceId">
+
+      <label for="organisation">Organisation:</label>
+      <input type="text" id="organisation" value = "vaionex corp." name="organisation">
+
+      <label for="legalForm">Legal Form:</label>
+      <input type="text" id="legalForm" value="Limited" name="legalForm">
+
+      <label for="governingLaw">Governing Law:</label>
+      <input type="text" id="governingLaw" value="US" name="governingLaw">
+
+      <label for="issuerCountry">Issuer Country:</label>
+      <input type="text" id="issuerCountry" value="US" name="issuerCountry">
+
+      <label for="jurisdiction">Jurisdiction:</label>
+      <input type="text" id="jurisdiction" value="US" name="jurisdiction">
+
+      <label for="email">Email:</label>
+      <input type="email" id="issuerEmail" value="info@vaionex.com" name="email">
+
+      <label for="schemaId">Schema ID:</label>
+      <input type="text" id="schemaId" value="NFT1.0/MA" name="schemaId">
+
+      <label for="website">Website:</label>
+      <input type="url" id="website" value="vaionex.com" name="website">
+
+      <label for="metaLegalTerms">Meta Legal Terms:</label>
+      <input type="text" id="metaLegalTerms" value="© 2020 TAAL TECHNOLOGIES SEZC\nALL RIGHTS RESERVED. ANY USE OF THIS SOFTWARE IS SUBJECT TO TERMS AND CONDITIONS OF LICENSE. USE OF THIS SOFTWARE WITHOUT LICENSE CONSTITUTES INFRINGEMENT OF INTELLECTUAL PROPERTY. FOR LICENSE DETAILS OF THE SOFTWARE, PLEASE REFER TO: www.taal.com/stas-token-license-agreement" name="metaLegalTerms">
+
+      <label for="mediaURI">Media URI:</label>
+      <input type="text" id="mediaURI" value="string" name="mediaURI">
+
+      <label for="mediaType">Media Type:</label>
+      <input type="text" id="mediaType" value="string" name="mediaType">
+
+      <label for="mediaAltURI">Media Alt URI:</label>
+      <input type="text" id="mediaAltURI" value="string" name="mediaType"> -->
+
+      <button class="button button--issue" type="button" id="issue-button">Issue Ticket</button>
+    </form>
+
+      </section>
+
+      <section class="content__section" role="list">
+        <div id="js-list-container">
+        </div>
+        <div id="js-error-container">
+        </div>
+        <div id="js-loading-indicator" class="loading-indicator"></div>
+      </section>
+
+    </main>
+
+    <footer class="l-footer">
+      <small>Created with ❤️ by Bendik Bjerkeset</small>
+    </footer>
+  </body>
+</html>

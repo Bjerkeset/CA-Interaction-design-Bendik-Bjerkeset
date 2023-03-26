@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="_REPLACE_WITH_DESCRIPTION_" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, _REPLACE_WITH_KEYWORD_"
+    />
+    <meta name="author" content="Bendik Bjerkeset" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./src/js/details.js"></script>
+    <title>_REPLACE_WITH_OBJECT_TITLE | _REPLACE_SITE_NAME</title>
+  </head>
+  <body class="animate__animated animate__fadeIn">
+    <header class="l-header">
+        
+      <nav class="navbar__container">
+        <div class="navbar__signout">
+          <button class="button button--signout" id="sign-out-button">Sign out</button>
+        </div>
+        <div class="navbar__list">
+          <ul class="navbar__list-ul">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./mint.html">Issue</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./exchange.html">Exchange</a></li>
+          </ul>
+        </div>
+        <div class="hamburger">
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+        </div>
+      </nav>
+
+      <h1><span id="js-h1"></span></h1>
+    </header>
+
+    <main class="l-main">
+        
+
+      <article>
+        <div id="js-detail__container"></div>
+        <div id="js-error-container"></div>
+      </article>
+      
+      <form class="is-hidden" id="js-list-for-sale__form" action="">
+
+        <div class="exit exit-list-for-sale">Exit</div>
+
+        <label for="js-bsv-amount">BSV Amout</label>
+        <input type="number" id="js-bsv-amount">
+
+        <label for="js-serial-nr">Serial Nummber</label>
+        <input type="number" id="js-serial-nr">
+
+        <button id="js-makeOffer-btn" class="button button--make-offer">Make an offer</button> <br>
+        <button id = "js-ispect-btn" class="button button--inspect-offer" >Inspect offer</button>
+
+      </form>
+
+
+    <section class="content__section" role="list">
+        <div id="js-list-container"></div>
+        <div id="js-error-container"></div>
+        <div id="js-loading-indicator" class="loading-indicator"></div>
+      </section>
+    </main>
+
+    <footer class="l-footer">
+      <!-- <small>Created with ❤️ by Bendik Bjerkeset</small> -->
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+.c-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--spacing-1);
+  padding: var(--spacing-1);
+  background-color: var(--color-white);
+  border-radius: var(--radius-1);
+  box-shadow: var(--shadow-1);
+}
+.login-intro__article {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  max-width: 600px;
+  color: var(--clr-card-2);
+}
+.login-intro__article h1 {
+  padding-bottom: 100px;
+  color: var(--clr-btn-signout);
+  font-size: var(--font-size-h1-1);
+}
+.login-intro__article h4 {
+  padding-bottom: 2rem;
+  font-size: var(--font-size-h4-1);
+}
+.login-intro__article p {
+  font-size: var(--font-size-p-1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding: 20px;
+  width: 95vw;
+  /* border: 1px solid #ccc; */
+  background-color: var(--clr-navbar);
+  border-radius: 10px;
+  max-width: 600px;
+}
+.issue-form__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.issue-form__section h4 {
+  padding: 20px 0;
+  color: var(--clr-btn-signout);
+  font-weight: 100;
+  font-size: 1.5rem;
+}
+
+.issue-form__section input {
+}
+
+.form__description {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size-p-1);
+  margin: 3rem 0;
+}
+
+.form__description p {
+  color: var(--clr-card-2);
+}
+
+.description__text {
+  margin: 1rem 0;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: calc(6px + 0.5vw);
+}
+
+tr {
+  background-color: #a7a7a7;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: var(--clr-btn-signout);
+  align-self: center;
+  font-size: var(--font-size-p-1);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: var(--clr-background-2);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+}
+
+#description {
+  height: 30vh;
+  max-width: 600px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.validation__container {
+  padding: 0.5rem;
+}
+.validation__container--success {
+  font-size: 2rem;
+  align-self: center;
+  padding-top: 1rem;
+  color: var(--clr-btn-defult);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  form {
+    padding: 10px;
+  }
+}

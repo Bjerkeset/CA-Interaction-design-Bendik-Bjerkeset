@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login and contact form" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, vite, relysia"
+    />
+    <meta name="author" content="Bendik Bjerkeset" />
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="./src/js/login.js"></script>
+    <title>Contact Us | Ticket List</title>
+  </head>
+  <body class="animate__animated animate__fadeIn">
+    <header class="l-header">
+    </header>
+    
+    <main class="l-main">
+      <section role="form-section">
+        <form action="" id="form__js" autocomplete="on">
+
+          <article class="login-intro__article" role="doc-introduction">
+            <h1>Login Page</h1>
+            <h4>Loggin with user credentials</h4>
+            <p>This page contains a login form where users can fill in their email and password. The form includes validation to ensure that users enter information in the correct format, and it has reset and submit buttons. The email and password input field only accepts the valid value.</p>
+          </article>
+
+          <div class="form__description">
+            <p class="description__text">To login you need to use exsisting credentials. Or make you own at www.relysia.com</p>
+            <table class="login-details__table">
+              <tr>
+                <th>Email</th>
+                <th>password</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <tr>
+                  <td>bb.bjerk@gmail.com</td>
+                  <td>@TKeb2qQ6uU8</td>
+                  <td>Main User</td>
+                </tr>
+                <tr>
+                  <td>bruce@hotmail.com</td>
+                  <td>relysia</td>
+                  <td>Test User</td>
+                </tr>
+                <tr>
+                  <td>bendik.bjerkeset@outlook.com</td>
+                  <td>relysia</td>
+                  <td>Test User</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>Test User</td>
+                </tr>
+              </tr>
+            </table>
+          </div>
+
+          <div class="form-group__container">
+            <label for="email__js">Email</label>
+            <input type="email" id="email__js">
+            <p class="validation__container" id="message-container__js--email"></p>
+          </div>
+          
+          <div class="form-group__container">
+            <label for="password__js">Password</label>
+            <input type="password" id="password__js">
+            <p class= "validation__container" id="message-container__js--password"></p>
+          </div>
+        
+          <button class="button button--submit-login" type="submit">Submit</button>
+          <button class="button button--reset-login" type="reset">Reset</button>
+          <span class="validation__container validation__container--success is-hidden">Success!!</span>
+        </form>
+      </section>
+    </main>
+
+    <!-- <footer class="l-footer">
+      <small>Created with ❤️ by Bendik Bjerkeset</small>
+    </footer> -->
+  </body>
+</html>

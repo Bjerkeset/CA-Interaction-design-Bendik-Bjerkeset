@@ -1,0 +1,28 @@
+/*!
+ * Variables
+ * @tutorial https://web.dev/at-property/
+ * @example https://fed-vocational-astro-course.vercel.app/en/html-css/module-4/css-variables
+ */
+
+:root {
+  /* Add your CSS variables here */
+  --clr-card: #f0f0f0;
+  --clr-card-font: #94a3b8;
+  --white: #fff;
+  --black: #000;
+  --clr-card-2: rgb(221, 221, 221);
+  --clr-error: red;
+  --clr-background-1: #03314b;
+  --clr-background-2: #9fa3b8;
+  --clr-btn-defult: #1cbf8e;
+  --clr-btn-defult-hover: #1eae83;
+  --clr-btn-signout: #ffcd33;
+  --clr-btn-signout-hover: #e7bd40;
+  --clr-btn-font: #efebeb;
+  --clr-navbar: #042a41;
+  --clr-content-1: #3f5a68;
+
+  --font-size-p-1: calc(10px + 0.5vw);
+  --font-size-h1-1: calc(1rem + 1vw);
+  --font-size-h4-1: calc(1rem + 0.4vw);
+}

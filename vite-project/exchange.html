@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ticket list Homepage" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, relysia, vite"
+    />
+    <meta name="author" content="Bendik Bjerkeset" />
+    <link rel="stylesheet" href="style.css" />    
+    <script type="module" src="src/js/exhange.js"></script>
+    <!-- <script type="text/javascript" src="https://unpkg.com/bsv@1.5.0/bsv.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/relysia@1.0.6/dist/relysia-sdk.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/centrifugal/centrifuge-js@latest/dist/centrifuge.min.js"></script> -->
+
+    <title>Homepage | Ticket List </title>
+  </head>
+  <body class="animate__animated animate__fadeIn">
+    <header class="l-header">
+      <nav class="navbar__container">
+        <div class="navbar__signout">
+          <button class="button button--signout" id="sign-out-button">Sign out</button>
+        </div>
+        <div class="navbar__list">
+          <ul class="navbar__list-ul">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./mint.html">Issue</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./exchange.html">Exchange</a></li>
+          </ul>
+        </div>
+        <div class="hamburger">
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+          <div class="hamburger__bar"></div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="l-main">
+      <section role="search"></section>
+
+      <article class="article article--exchange" role="doc-introduction">
+        <h1>Exhange list</h1>
+        <p>This page displays offers created at the ticket detail page.</p>
+      </article>
+
+
+            
+      <!-- <section class="post__section">
+      <form action="">
+
+          <label for="js-bsv-amount">BSV Amout</label>
+          <input type="number" id="js-bsv-amount">
+
+          <label for="js-serial-nr">Serial Nummber</label>
+          <input type="number" id="js-serial-nr">
+
+          <button id="js-makeOffer-btn" >Make an offer</button> <br>
+          <button id = "js-ispect-btn" >Inspect offer</button>
+        </form>
+      </section> -->
+
+      <section class="content__section" role="list">
+        <div id="js-response-container">
+        </div>
+        <div id="js-error-container">
+        </div>
+        <div id="js-loading-indicator" class="loading-indicator"></div>
+      </section>
+
+    </main>
+
+    <footer class="l-footer">
+      <small>Created with ❤️ by Bendik Bjerkeset</small>
+    </footer>
+  </body>
+</html>
