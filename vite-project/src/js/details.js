@@ -2,28 +2,18 @@ import RelysiaSDK from 'relysia';
 import { redirectToLoginPage, setupSignOutButton } from "./assets.js";
 const relysia = new RelysiaSDK();
 
-
 // Dom Elements
 const detailContainer = document.querySelector("#js-detail__container");
 const errorContainer = document.querySelector("#js-error-container");
-const titleElement = document.querySelector("#js-h1");
-const listContainer = document.querySelector('#js-list-container');
 const loadingIndicator = document.querySelector(".loading-indicator");  
 const p = document.querySelector("#send__response--js")
+const inspectBtn = document.querySelector("#js-ispect-btn"); 
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const url = `https://api.relysia.com/v1/token/${id}`;
 
-
-
-// const postButton = document.querySelector("#js-post-btn");
-const message = document.querySelector("#js-message");
-// const p = document.querySelector("#js-response-container");
-// const loadingIndicator = document.querySelector("#js-loading-indicator");
-// const bsvAmount = document.querySelector("#js-bsv-amount");
-const inspectBtn = document.querySelector("#js-ispect-btn"); 
 
 
 
@@ -216,8 +206,6 @@ const sendToken = async function (address, serialNumber) {
       body: JSON.stringify(data)
     };
     
-    // const p = document.querySelector("#sell__response--js");
-    // const sellTxId = document.querySelector("#js-sell-tx-id") 
   
     try {
       const response = await fetch("https://api.relysia.com/v1/send", options);
@@ -225,14 +213,7 @@ const sendToken = async function (address, serialNumber) {
       const data = json.data;
       console.log("json", json)
       console.log("Data",data)
-  
-    //   p.innerHTML = JSON.stringify(data.msg, null, "<br/>");
-  
-    //   p.innerHTML = "dskadkasdkasdas"
-    // //   p.innerHTML = `
-    // //   <div><p>${data.msg}</p></div>
-    // //   <div><p>View in Block Explorer: <a href="https://whatsonchain.com/tx/${data.txIds}">Whatsonchain</a></p></div>`
-  
+    
     } catch (error) {
       console.error("error", data)
       p.innerHTML = JSON.stringify(data.msg, null, "<br/>");
@@ -281,10 +262,6 @@ async function inspectAtomicSwapOffer(swapHex) {
         },
         body: JSON.stringify({ swapHex })
       });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
   
       const data = await response.json();
   

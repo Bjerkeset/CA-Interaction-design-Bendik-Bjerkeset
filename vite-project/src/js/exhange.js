@@ -4,6 +4,7 @@
 import RelysiaSDK from 'relysia';
 import { redirectToLoginPage, setupSignOutButton, toggleHamburgerMenu } from "./assets.js";
 
+
 const relysia = new RelysiaSDK();
 // const postButton = document.querySelector("#js-post-btn");
 const message = document.querySelector("#js-message");
@@ -18,6 +19,9 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 console.log(id)
+
+// NOTE: Deletes local storage and rederects to login. 
+setupSignOutButton();
 
 // let createOffer = async () => {
 // try {

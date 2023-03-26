@@ -7,7 +7,7 @@ console.log(relysia)
 // NOTE: Calling rederect function after fetching the API. 
 setTimeout(() => {
   redirectToLoginPage();
-}, 10000);
+}, 4000);
 
 // NOTE: Deletes local storage and rederects to login. 
 setupSignOutButton();

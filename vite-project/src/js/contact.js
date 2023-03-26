@@ -1,3 +1,7 @@
+import RelysiaSDK from 'relysia';
+import { redirectToLoginPage, setupSignOutButton } from "./assets.js";
+const relysia = new RelysiaSDK();
+
 // NOTE: Get DOM elements from the DOM
 const formElement = document.querySelector('#form__js');
 const nameElement = document.querySelector('#name__js');
@@ -11,6 +15,9 @@ const successMessage = document.querySelector(".successMessage__js");
 const resetButton = document.querySelector('button[type="reset"]');
 const submitButton = formElement.querySelector('button[type="submit"]');
 const validationContainer = document.querySelectorAll(".validation__container")
+
+// NOTE: Deletes local storage and rederects to login. 
+setupSignOutButton();
 
 function validateForm(event) {
   event.preventDefault();
