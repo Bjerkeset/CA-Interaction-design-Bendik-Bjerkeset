@@ -1,5 +1,5 @@
 LINK GITHUB: https://github.com/Bjerkeset/CA-Interaction-design-Bendik-Bjerkeset
-LINK NETLIFY:(Might be broken) https://peppy-macaron-5029eb.netlify.app/
+LINK NETLIFY:https://gorgeous-paletas-3d837e.netlify.app/index.html
 
 API:https://api.relysia.com/docs/static/index.html
 SDK:https://docs.relysia.com/
