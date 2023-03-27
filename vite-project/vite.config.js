@@ -8,7 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         details: resolve(__dirname, "details.html"),
         contact: resolve(__dirname, "contact.html"),
-        exhange: resolve(__dirname, "exchange.html"),
+        exchange: resolve(__dirname, "exchange.html"),
         login: resolve(__dirname, "login.html"),
         mint: resolve(__dirname, "mint.html"),
       },
