@@ -16,7 +16,7 @@ function validateForm(event) {
   
   const emailInput = emailElement.value;
 //   const emailRegex = /^bb\.bjerk@gmail\.com$/i // NOTE: Must match (upper or lowercase).
-  const emailRegex = /^(bruce@hotmail\.com|bb\.bjerk@gmail\.com)$/ // NOTE: Must match (upper or lowercase).
+  const emailRegex = /^(bruce@hotmail\.com|bb\.bjerk@gmail\.com|bendik\.bjerkeset@outlook\.com)$/i  // NOTE: Must match (upper or lowercase).
   const isValidEmail = emailRegex.test(emailInput)
 
   const passwordInput = passwordElement.value;

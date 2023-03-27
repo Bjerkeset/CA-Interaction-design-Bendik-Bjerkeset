@@ -28,9 +28,8 @@ async function fetchTicketDetails() {
   try {
     const response = await fetch(url);
     const details = await response.json();
-    
-    console.log("fetchTicketDetails() var-details", details);
 
+    console.log("fetchTicketDetails() var-details", details);
     //Calls fetchTickets to fetch the serial number for use in DOM. (createHtml is called inside fetchTickets)
     fetchTickets(details)
 
@@ -148,8 +147,8 @@ function createHtml(details, ticket) {
                 sendToken(address, serialNumber);
             })
 
-            console.log("createHtml()--sn",serialNumberArray)
-            console.log("createHtml()--sn",serialNumber)
+            // console.log("createHtml()--sn",serialNumberArray)
+            // console.log("createHtml()--sn",serialNumber)
 
             
             

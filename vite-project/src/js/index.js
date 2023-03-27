@@ -2,8 +2,6 @@ import RelysiaSDK from 'relysia';
 import { redirectToLoginPage, setupSignOutButton, toggleHamburgerMenu } from "./assets.js";
 const relysia = new RelysiaSDK();
 
-console.log(relysia)
-
 // NOTE: Calling rederect function after fetching the API. 
 setTimeout(() => {
   redirectToLoginPage();
@@ -27,32 +25,6 @@ const listContainer = document.querySelector('#js-list-container');
 const loadingIndicator = document.querySelector("#js-loading-indicator");  
 const errorContainer = document.querySelector("#js-error-container");
 const searchInput = document.querySelector('#search-input');
-
-
-// async function fetchWallets(parameters) {
-//   try {
-//     const url = new URL('https://api.relysia.com/v1/wallets');
-//     url.search = new URLSearchParams(parameters).toString();
-
-//     const response = await fetch(url, {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`Failed to retrieve wallets: ${response.statusText}`);
-//     }
-
-//     const wallets = await response.json();
-//     return wallets;
-//   } catch (error) {
-//     console.error('Error retrieving wallets:', error);
-//     throw error;
-//   }
-// }
-// fetchWallets()
       
 // NOTE: Fetching the auth token using loggin details. 
 export async function fetchAuthToken() {
@@ -63,7 +35,7 @@ export async function fetchAuthToken() {
     const token = response.token
     authToken = token; 
     localStorage.setItem("token", authToken);
-    console.log("token", response.token)
+    // console.log("token", response.token)
 
     fetchTickets();
     return token;

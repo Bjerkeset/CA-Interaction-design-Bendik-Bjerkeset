@@ -46,10 +46,8 @@ setupSignOutButton();
 //   console.log("data: ", data)
 //   console.log("hex: ", hex)
 
-//   p.innerHTML = JSON.stringify(data.data.msg, null, '<br>');
 // } catch (error) {
 //   console.log(error);
-//   p.innerHTML = JSON.stringify(error.response.data.data.msg, null, '<br/>');
 //   return error.message;
 // }
 // };
@@ -64,13 +62,7 @@ async function inspectAtomicSwapOffer(swapHex) {
       body: JSON.stringify({ swapHex })
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
     const data = await response.json();
-
-    // Do something with the decoded data
     console.log(data);
 
   } catch (error) {
