@@ -7,7 +7,6 @@ async function fetchPost() {
 
     const data = await response.json();
     console.log("worpress data: ", data);
-
     for (let i = 0; i < data.length; i++) {
       const postContent = data[i];
       const postElement = document.createElement("a");

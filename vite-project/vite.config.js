@@ -11,6 +11,8 @@ export default defineConfig({
         exchange: resolve(__dirname, "exchange.html"),
         login: resolve(__dirname, "login.html"),
         mint: resolve(__dirname, "mint.html"),
+        blog: resolve(__dirname, "blog.html"),
+        blogdetails: resolve(__dirname, "blog-details.html"),
       },
     },
   },

@@ -7,9 +7,10 @@ async function fetchPostDetails() {
     const response = await fetch(url, { method: "GET" });
 
     const postContent = await response.json();
+    postContainer.classList.add("post");
     postContainer.innerHTML = `
-    <h2 class="post">${postContent.title.rendered}</h2>
-    <p class="post">${postContent.content.rendered}</p>
+    <h2">${postContent.title.rendered}</h2>
+    ${postContent.content.rendered}
     `;
   } catch (error) {
     console.error("Error:", error);
