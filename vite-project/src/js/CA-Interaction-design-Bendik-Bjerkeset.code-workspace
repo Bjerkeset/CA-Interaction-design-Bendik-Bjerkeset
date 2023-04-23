@@ -1,0 +1,19 @@
+{
+  "folders": [
+	{
+		"path": "../../.."
+	},
+	{
+		"path": "../../../../../../../../../Local Sites/noroffcourse"
+	},
+	{
+		"path": "../../../../../../../react/Tutorial/react-18-freecodecamp"
+	},
+	{
+		"path": "../../../../../../../react/next-js"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "wallet-54"
+  }
+}

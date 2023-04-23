@@ -38,195 +38,64 @@ const mediaAltURIElement = document.querySelector('#mediaAltURI');
 const issueButton = document.querySelector('#issue-button')
 
 
-// fetchWallets()
-// issueNFT();
 
+// async function fetchWallets() {
+//   try {
+//     const url = new URL('https://api.relysia.com/v1/wallets');
+//     // url.search = new URLSearchParams(parameters).toString();
 
-async function fetchWallets() {
-  try {
-    const url = new URL('https://api.relysia.com/v1/wallets');
-    // url.search = new URLSearchParams(parameters).toString();
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         'authToken' : localStorage.getItem('token'),
+//         'Content-Type': 'application/json'
+//       }
+//     });
+//     const data = await response.json();
+//     console.log('fetchwallets()--data', data)
 
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'authToken' : localStorage.getItem('token'),
-        'Content-Type': 'application/json'
-      }
-    });
-    const data = await response.json();
-    console.log('fetchwallets()--data', data)
+//     if (!response.ok) {
+//       throw new Error(`Failed to retrieve wallets: ${response.statusText}`);
+//     }
 
-    if (!response.ok) {
-      throw new Error(`Failed to retrieve wallets: ${response.statusText}`);
-    }
+//     return data;
+//   } catch (error) {
+//     console.error('Error retrieving wallets: ', error);
+//     throw error;
+//   }
+// }
 
-    return data;
-  } catch (error) {
-    console.error('Error retrieving wallets: ', error);
-    throw error;
-  }
-}
+issueButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  createToken();
+})
 
-
-// issueNFT()
-async function issueNFT() {
-    const endpoint = 'https://api.relysia.com/v1/issue';
-    const parameters = {
-      serviceId: '',
-      protocol: '',
-      data: [{
-        "name": "Football Card 21",
-        "protocolId": "STAS",
-        "symbol": "FC21",
-        "description": "A FC 21 season nft",
-        "image": "https://firebasestorage.googleapis.com/v0/b/nftdev/o/nftTemp%2FWL1DdD?alt=media",
-        "tokenSupply": 1,
-        "decimals": 0,
-        "satsPerToken": 1500,
-        "splitable": false,
-        "properties": {
-          "legal": {
-            "terms": "© 2020 TAAL TECHNOLOGIES SEZC\nALL RIGHTS RESERVED. ANY USE OF THIS SOFTWARE IS SUBJECT TO TERMS AND CONDITIONS OF LICENSE. USE OF THIS SOFTWARE WITHOUT LICENSE CONSTITUTES INFRINGEMENT OF INTELLECTUAL PROPERTY. FOR LICENSE DETAILS OF THE SOFTWARE, PLEASE REFER TO: www.taal.com/stas-token-license-agreement",
-            "licenceId": "Vaionex"
-          },
-          "issuer": {
-            "organisation": "vaionex corp.",
-            "legalForm": "Limited",
-            "governingLaw": "US",
-            "issuerCountry": "US",
-            "jurisdiction": "US",
-            "email": "info@vaionex.com"
-          },
-          "meta": {
-            "schemaId": "NFT1.0",
-            "website": "https://football21.com",
-            "legal": {
-              "terms": "the terms of your nft"
-            },
-            "media": [
-              {
-                "URI": "string",
-                "type": "string",
-                "altURI": "string"
-              }
-            ]
-          }
-        },
-      }],
-    };
-  
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "authToken": localStorage.getItem("token"),
-      },
-      body: JSON.stringify(parameters),
-    });
-    
-      const data = await response.json();
-      console.log("issueNFT(), data: ", data)
-  
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return data;
-  }
-  
-
-  /// NEW TRY: 
-
-async function issueStasToken(parameters) {
+async function createToken() {
   const url = 'https://api.relysia.com/v1/issue';
-  const requestOptions = {
+  const authToken = localStorage.getItem("token");
+  const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'authToken': localStorage.getItem('token')
+      'authToken': authToken,
+      'accept': '*/*'
     },
-    body: JSON.stringify(parameters),
-  };
-
-  try {
-    const response = await fetch(url, requestOptions);
-    const data = await response.json();
-    console.log("issueStasToken()", data)
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
-    }
-    return data;
-  } catch (error) {
-    console.error('Error issuing STAS token:', error);
-    throw error;
-  }
-}
-const parameters = {
-  serviceId: 'optional',
-  protocol: 'optional',
-  data: {
-    "name": "Football Card 21",
-    "protocolId": "STAS",
-    "symbol": "FC21",
-    "description": "A FC 21 season nft",
-    "image": "https://firebasestorage.googleapis.com/v0/b/nftdev/o/nftTemp%2FWL1DdD?alt=media",
-    "tokenSupply": 1,
-    "decimals": 0,
-    "satsPerToken": 1500,
-    "splitable": false,
-    "properties": {
-      "legal": {
-        "terms": "© 2020 TAAL TECHNOLOGIES SEZC\nALL RIGHTS RESERVED. ANY USE OF THIS SOFTWARE IS SUBJECT TO TERMS AND CONDITIONS OF LICENSE. USE OF THIS SOFTWARE WITHOUT LICENSE CONSTITUTES INFRINGEMENT OF INTELLECTUAL PROPERTY. FOR LICENSE DETAILS OF THE SOFTWARE, PLEASE REFER TO: www.taal.com/stas-token-license-agreement",
-        "licenceId": "Vaionex"
-      },
-      "issuer": {
-        "organisation": "vaionex corp.",
-        "legalForm": "Limited",
-        "governingLaw": "US",
-        "issuerCountry": "US",
-        "jurisdiction": "US",
-        "email": "info@vaionex.com"
-      },
-      "meta": {
-        "schemaId": "NFT1.0",
-        "website": "https://football21.com",
-        "legal": {
-          "terms": "the terms of your nft"
-        },
-        "media": [
-          {
-            "URI": "string",
-            "type": "string",
-            "altURI": "string"
-          }
-        ]
-      }
-    },
-  },
-};
-
-const parametersInArray = {
-  serviceId: 'optional',
-  protocol: 'optional',
-  data: [
-    {
-      "name": "Football Card 21",
+    body: JSON.stringify({
+      "name": nameElement.value,
       "protocolId": "STAS",
-      "symbol": "FC21",
-      "description": "A FC 21 season nft",
-      "image": "https://firebasestorage.googleapis.com/v0/b/nftdev/o/nftTemp%2FWL1DdD?alt=media",
-      "tokenSupply": 1,
+      "symbol": symbolElement.value,
+      "description": descriptionElement.value,
+      "image": "https://upload.wikimedia.org/wikipedia/en/9/95/Test_image.jpg",
+      "tokenSupply": tokenSupplyElement.value,
       "decimals": 0,
-      "satsPerToken": 1500,
-      "splitable": false,
+      "satsPerToken": 1,
       "properties": {
-        
         "legal": {
-          "terms": "© 2020 TAAL TECHNOLOGIES SEZC\nALL RIGHTS RESERVED. ANY USE OF THIS SOFTWARE IS SUBJECT TO TERMS AND CONDITIONS OF LICENSE. USE OF THIS SOFTWARE WITHOUT LICENSE CONSTITUTES INFRINGEMENT OF INTELLECTUAL PROPERTY. FOR LICENSE DETAILS OF THE SOFTWARE, PLEASE REFER TO: www.taal.com/stas-token-license-agreement",
-          "licenceId": "Vaionex"
+          "terms": "STAS, Inc. retains all rights to the token script.  Use is subject to terms at https://stastoken.com/license.",
+          "licenceId": "stastoken.com"
         },
         "issuer": {
-          "organisation": "vaionex corp.",
+          "organisation": "Vaionex Corp.",
           "legalForm": "Limited",
           "governingLaw": "US",
           "issuerCountry": "US",
@@ -234,10 +103,10 @@ const parametersInArray = {
           "email": "info@vaionex.com"
         },
         "meta": {
-          "schemaId": "NFT1.0",
-          "website": "https://football21.com",
+          "schemaId": "STAS1.0",
+          "website": "vaionex.com",
           "legal": {
-            "terms": "the terms of your nft"
+            "terms": "Your token terms and description."
           },
           "media": [
             {
@@ -248,15 +117,17 @@ const parametersInArray = {
           ]
         }
       },
-    },
-  ],
-};
+      "splitable": false,
+      "data": []
+    })
+  };
 
-issueStasToken(parametersInArray)
-  // .then((data) => {
-  //   console.log('STAS token issued successfully:', data);
-  // })
-  // .catch((error) => {
-  //   console.error('Error issuing STAS token:', error);
-  // });
-  
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+

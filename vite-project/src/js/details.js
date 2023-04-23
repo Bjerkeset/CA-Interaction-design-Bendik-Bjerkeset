@@ -2,6 +2,15 @@ import RelysiaSDK from 'relysia';
 import { redirectToLoginPage, setupSignOutButton } from "./assets.js";
 const relysia = new RelysiaSDK();
 
+import { db } from "./firebase";
+import { addDoc, collection } from "firebase/firestore";
+
+// Reference to the "user response" collection
+const hexValuesCollection = collection(db, 'hex-values');
+const hexAndSwapIdCollection = collection(db, 'HexAndSwapID');
+
+// addNewUser();
+
 // Dom Elements
 const detailContainer = document.querySelector("#js-detail__container");
 const errorContainer = document.querySelector("#js-error-container");
@@ -13,9 +22,6 @@ const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
 const url = `https://api.relysia.com/v1/token/${id}`;
-
-
-
 
 // NOTE: Deletes local storage and rederects to login. 
 setupSignOutButton();
@@ -147,8 +153,8 @@ function createHtml(details, ticket) {
                 sendToken(address, serialNumber);
             })
 
-            // console.log("createHtml()--sn",serialNumberArray)
-            // console.log("createHtml()--sn",serialNumber)
+            console.log("createHtml()--sn",serialNumberArray)
+            console.log("createHtml()--sn",serialNumber)
 
             
             
@@ -223,59 +229,158 @@ const sendToken = async function (address, serialNumber) {
 console.log("id :", id )
 
 //Create an offer that lists on the echange page.
-let createOffer = async () => {
+// let createOffer = async function () {
+//   try {
+//     const config = {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json', "authToken": localStorage.getItem("token") },
+//       body: JSON.stringify({
+//         "dataArray": [
+//           {
+//             "tokenId": id,
+//             "sn": 5,
+//             "amount": 1,
+//             "wantedAmount": 0.0001,
+//             "type": "BSV"
+//           }
+//         ]
+//       })
+//     };
+//     const response = await fetch('https://api.relysia.com/v1/offer', config);
+//     const data = await response.json();
+//     const hex = data.data.contents[0];
+//     console.log("data: ", data);
+//     console.log("hex: ", hex);
+
+
+//     // Insert data into Firestore
+//     const addHexToFirebase = async () => {
+//       try {
+//         const hexObject = JSON.parse(`{"hex": "${hex}"}`);;
+//         const docRef = await addDoc(hexValuesCollection, hexObject);
+//         console.log('Document written with ID: ', docRef.id);
+//       } catch (e) {
+//         console.error('Error adding document: ', e);
+//       }
+//     };
+    
+//     addHexToFirebase();
+//     return hex
+
+//     } catch (error) {
+//       console.log(error);
+//       return error.message;
+//     }
+// };
+
+//Create an offer that lists on the echange page. try exchange endpoint
+let createOffer = async function () {
   try {
     const config = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', "authToken": localStorage.getItem("token") },
+      headers: {
+        'Content-Type': 'application/json',
+        "authToken": localStorage.getItem("token") 
+      },
       body: JSON.stringify({
-        "dataArray": [
-          {
-            "tokenId": id,
-            "sn": 15,
-            "amount": 1,
-            "wantedAmount": 0.0001,
-            "type": "BSV"
-          }
-        ]
+          "dataArray": [
+            {
+              "tokenId": "faa1a4e103d3ab9f050a48991e03040290dac01e-YE",
+              "sn": 50,
+              "amount": 1e-8,
+              "type": "BSV",
+              "payment": [
+                {
+                  "to": "14tw3sEyubapmzStR1BcmxnfGYXs9jAdFi",
+                  "amount": 1e-8
+                }
+              ]
+            }
+          ]
       })
     };
-    const response = await fetch('https://api.relysia.com/v1/offer', config);
+    const response = await fetch('https://api.relysia.com/v1/exchangeOffer', config);
     const data = await response.json();
-    const hex = data.data.contents
-    console.log("data: ", data)
-    console.log("hex: ", hex)
-  
-  } catch (error) {
-    console.log(error);
-    return error.message;
-  }
-  };
+    const hex = data.data.contents[0].swapOfferHex;
+    const swapId = data.data.contents[0].swapId;
+    console.log("data: ", data);
+    console.log("swapId: ", swapId);
+    console.log("hex: ", hex);
 
-async function inspectAtomicSwapOffer(swapHex) {
-    try {
-      const response = await fetch('https://api.relysia.com/v1/inspect', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ swapHex })
-      });
-  
-      const data = await response.json();
-  
-      console.log(data);
-  
+
+    // Insert data into Firestore
+    const addHexToFirebase = async () => {
+      try {
+        const hexObject = JSON.parse(`{"hex": "${hex}"}`);;
+        const swapIdObject = JSON.parse(`{"Swap-ID": "${swapId}"}`);;
+        const docRef = await addDoc(hexAndSwapIdCollection, swapIdObject, hexObject);
+        console.log('Document written with ID: ', docRef.id);
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
+    };
+    addHexToFirebase();
+    return hex
+
     } catch (error) {
-      console.error('Error:', error);
+      console.log(error);
+      return error.message;
     }
-  }
-  
-inspectBtn.addEventListener('click', () => {
-  event.preventDefault();
+};
 
-  // inspect offer();
-  inspectAtomicSwapOffer('swap hex here');
-});
+
+const hexDataArray = [
+  {
+    swapHex:
+    "0100000001795b669b4b6be5881185386e5d862ac073bfcea573652409183a715fb1e11d10000000006b483045022100be8285cbf421170f4210eecf53dc00c5a087de8fec75d7e9c3d4f305bfdca8d6022043a76b7e8f0c9acec614a1b39b6129becf4f5f46fdc3523ec01cfcddbd5978c4c3210305f951df78086dc1a94c709f3c3ca3dd9562e6e01d47552d9b4985abcf256d8dffffffff0110270000000000001976a914ee6b25c9c9ecb9bb48c368d9494ccfe83c8ee2f988ac00000000"
+  }
+];
+
+
+
+// inspectAtomicSwapOffer(dataArray);
+
+// const addHexToFirebase = async () => {
+//   try {
+//     const docRef = await addDoc(usersRef, newUser);
+//     console.log('Document written with ID: ', docRef.id);
+//   } catch (e) {
+//     console.error('Error adding document: ', e);
+//   }
+// };
+
+// addHexToFirebase();
+
+// async function inspectAtomicSwapOffer (swapHex) {
+//     try {
+//       const response = await fetch('https://api.relysia.com/v1/inspect', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           "authToken": localStorage.getItem("token")
+//         },
+//         body: dataArray[{}] JSON.stringify [{
+//           "swapHex": "0100000001795b669b4b6be5881185386e5d862ac073bfcea573652409183a715fb1e11d10000000006b483045022100be8285cbf421170f4210eecf53dc00c5a087de8fec75d7e9c3d4f305bfdca8d6022043a76b7e8f0c9acec614a1b39b6129becf4f5f46fdc3523ec01cfcddbd5978c4c3210305f951df78086dc1a94c709f3c3ca3dd9562e6e01d47552d9b4985abcf256d8dffffffff0110270000000000001976a914ee6b25c9c9ecb9bb48c368d9494ccfe83c8ee2f988ac00000000",
+//       }]
+//       });
   
+//       const data = await response.json();
+  
+//       console.log(data);
+  
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   }
+  
+//   inspectAtomicSwapOffer();
+// inspectBtn.addEventListener('click', (event) => {
+//   event.preventDefault();
+//   // inspect offer();
+// });
+
+
+
+
+// "0100000001795b669b4b6be5881185386e5d862ac073bfcea573652409183a715fb1e11d10000000006b483045022100be8285cbf421170f4210eecf53dc00c5a087de8fec75d7e9c3d4f305bfdca8d6022043a76b7e8f0c9acec614a1b39b6129becf4f5f46fdc3523ec01cfcddbd5978c4c3210305f951df78086dc1a94c709f3c3ca3dd9562e6e01d47552d9b4985abcf256d8dffffffff0110270000000000001976a914ee6b25c9c9ecb9bb48c368d9494ccfe83c8ee2f988ac00000000"
 

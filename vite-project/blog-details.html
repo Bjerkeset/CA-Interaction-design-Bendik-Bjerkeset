@@ -8,8 +8,8 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, relysia, vite" />
     <meta name="author" content="Bendik Bjerkeset" />
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./src/js/index.js"></script>
-    <title>Homepage | My Tickets</title>
+    <script type="module" src="./src/js/postDetails.js"></script>
+    <title>Homepage | Blog details</title>
     <!-- Hotjar Tracking Code for my site -->
   </head>
   <body class="animate__animated animate__fadeIn">
@@ -42,13 +42,6 @@
 
       <article class="intro__article article" role="doc-introduction">
         <h1>My Assets</h1>
-        <p>
-          This web page is for displaying a list of tickets. The page fetches
-          data from an API and displays the tickets in the main section. The
-          user can filter the tickets by searching for a specific name using the
-          search bar in the page header. The page uses the Relysia SDK to
-          authenticate the user and fetch blockchain data from the API.
-        </p>
       </article>
 
       <section>
@@ -64,6 +57,7 @@
 
       <article class="content__section" role="list">
         <div id="js-list-container"></div>
+        <div id="js-post-container"></div>
         <div id="js-error-container"></div>
         <div id="js-loading-indicator" class="loading-indicator"></div>
       </article>

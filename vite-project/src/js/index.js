@@ -1,5 +1,6 @@
 import RelysiaSDK from 'relysia';
-import { redirectToLoginPage, setupSignOutButton, toggleHamburgerMenu } from "./assets.js";
+import { redirectToLoginPage, setupSignOutButton, toggleHamburgerMenu, getUserDetails } from "./assets.js";
+// import { pay } from 'relysia/src/validator.js';
 const relysia = new RelysiaSDK();
 
 // NOTE: Calling rederect function after fetching the API. 
@@ -16,15 +17,83 @@ fetchAuthToken();
 // NOTE: toggleHamburgerMenu();
 toggleHamburgerMenu();
 
-//NOTE: 
-let authToken = "";
+// NOTE: Fetches user details form an imported function at assets.js.
+getUserDetails();
 
+// NOTE: etches wallets and address formats. Toggles wallets and stores them in local storage. 
+fetchAndStoreWalletId();
 
 // NOTE: Get containers from the DOM and store value in variables. 
 const listContainer = document.querySelector('#js-list-container');
 const loadingIndicator = document.querySelector("#js-loading-indicator");  
 const errorContainer = document.querySelector("#js-error-container");
 const searchInput = document.querySelector('#search-input');
+
+let authToken = "";
+
+
+async function fetchAndStoreWalletId() {
+  try {
+    const response = await fetch('https://api.relysia.com/v1/wallets', {
+      headers: {
+        "authToken": localStorage.getItem("token")
+      }
+    });
+    const data = await response.json();
+    // Log the number of wallets
+    const wallets = data.data.wallets;
+    // console.log("fetchAndStoreWalletId() data: ",data)
+    // console.log('Number of wallets:', wallets);
+
+    // Create a list of wallet names with click event listeners
+    const walletList = document.querySelector('#wallet-list');
+    for (let i = 0; i < wallets.length; i++) {
+      const walletItem = document.createElement('li');
+      const walletId = wallets[i].walletID
+      walletItem.textContent = `Wallet ${i+1}`;
+      // console.log("wallet ID:", walletId);
+
+      //Fetches the Paymail and displays it in the Dom.
+      const paymail = await getAddressFormats(walletId);
+      walletItem.innerHTML = paymail
+      // console.log('Paymail:', paymail);
+
+      // Outlines the selected wallet.
+      if (localStorage.getItem('walletID') === walletId) {
+        walletItem.classList.add('is-selected');
+      }
+
+      walletItem.addEventListener('click', () => {
+        localStorage.setItem('walletID', wallets[i].walletID);
+        location.reload();
+        console.log('Wallet ID stored in local storage:', wallets[i].walletID);
+      });
+      walletList.appendChild(walletItem);
+    }
+  } catch (error) {
+    console.error('Error fetching wallet ID:', error);
+  }
+}
+
+// Fetch the paymail, and call it inside of fetchAndStoreWalletId(). 
+async function getAddressFormats(walletId) {
+  const url = 'https://api.relysia.com/v1/address';
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'walletID': walletId,
+        'authToken': localStorage.getItem('token')
+      }
+    });
+    const data = await response.json();
+    const paymail = data.data.paymail;
+    return paymail
+
+  } catch (error) {
+    console.error(`Fetch error: ${error}`);
+  }
+}
       
 // NOTE: Fetching the auth token using loggin details. 
 export async function fetchAuthToken() {
@@ -35,9 +104,12 @@ export async function fetchAuthToken() {
     const token = response.token
     authToken = token; 
     localStorage.setItem("token", authToken);
-    // console.log("token", response.token)
+    // console.log("token", response.token);
 
-    fetchTickets();
+    // const walletIdOne = '00000000-0000-0000-0000-000000000000';
+    // const walletIdTwo = '1e0a7cb3-4a12-4b7f-bdd0-ea936c99902a';
+    const walletID = localStorage.getItem("walletID")
+    fetchTickets(walletID);
     return token;
     
   } catch (error) {
@@ -46,9 +118,9 @@ export async function fetchAuthToken() {
     return null;
   }
 }
-      
+
 // NOTE: fetching list. 
-async function fetchTickets() {
+async function fetchTickets(walletID) {
   try {
       loadingIndicator.classList.add("show"); // Show the loading indicator
       const url = "https://api.relysia.com/v2/balance";
@@ -56,12 +128,13 @@ async function fetchTickets() {
           method: "GET",
           headers: {
               "authToken": localStorage.getItem("token"),
+              "walletID": walletID
           },
       });
       const data = await response.json();
       
       const tickets = data.data.coins;
-      console.log("fetchtickets()",data)
+      // console.log("fetchtickets()",data)
       
       //NOTE: looping response object. 
       for (let i = 0; i < tickets.length; i++) {
@@ -106,7 +179,6 @@ function renderTickets(ticket) {
       return undefined;
     }
 };
-
 
 searchInput.addEventListener('input', function () {
   const searchTerm = searchInput.value.toLowerCase().trim(); 

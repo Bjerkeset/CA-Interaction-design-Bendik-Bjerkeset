@@ -8,7 +8,7 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, relysia, vite" />
     <meta name="author" content="Bendik Bjerkeset" />
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./src/js/index.js"></script>
+    <script type="module" src="./src/js/wordpress.js"></script>
     <title>Homepage | My Tickets</title>
     <!-- Hotjar Tracking Code for my site -->
   </head>
@@ -26,7 +26,6 @@
             <li><a href="./mint.html">Issue</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <li><a href="./exchange.html">Exchange</a></li>
-            <li><a href="./blog.html">Blog</a></li>
           </ul>
         </div>
         <div class="hamburger">
@@ -43,11 +42,9 @@
       <article class="intro__article article" role="doc-introduction">
         <h1>My Assets</h1>
         <p>
-          This web page is for displaying a list of tickets. The page fetches
-          data from an API and displays the tickets in the main section. The
-          user can filter the tickets by searching for a specific name using the
-          search bar in the page header. The page uses the Relysia SDK to
-          authenticate the user and fetch blockchain data from the API.
+          This web page is for displaying a list of blog post from wordpress.
+          The page fetches data from an API and displays the blog posts in the
+          main section.
         </p>
       </article>
 
@@ -62,11 +59,11 @@
         <input type="text" id="search-input" placeholder="Enter item name..." />
       </section>
 
-      <article class="content__section" role="list">
+      <section class="content__section" role="list">
         <div id="js-list-container"></div>
         <div id="js-error-container"></div>
         <div id="js-loading-indicator" class="loading-indicator"></div>
-      </article>
+      </section>
     </main>
 
     <!-- <footer class="l-footer">

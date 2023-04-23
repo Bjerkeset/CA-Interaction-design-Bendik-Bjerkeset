@@ -30,7 +30,7 @@ export function toggleHamburgerMenu() {
 
 };
 
-
+//Get User data. 
 export async function getUserDetails() {
     try {
       const response = await fetch('https://api.relysia.com/v1/user', {

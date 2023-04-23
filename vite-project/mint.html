@@ -55,15 +55,15 @@
     
     <form id="issueForm">
       <label for="name">Name:</label>
-      <input type="text" value="ACDC - live at Oslo Spectrum" id="name" name="name">
+      <input type="text" id="name" name="name">
 
       <!-- <label for="protocolId">Protocol ID:</label>
       <input type="text" id="protocolId" value="STAS" name="protocolId"> -->
 
       <label for="symbol">Symbol:</label>
-      <input type="text" value="YE" id="symbol" name="symbol">
+      <input type="text" id="symbol" name="symbol">
 
-      <label for="description"></label>
+      <label for="description">[Event Name] Digital Concert Ticket Ticket Holder: [Your Name] [Event Date]: [Date of Event] Start Time: [Start Time of Event] Location: [Event Location] Ticket Details: Ticket Type: [General Admission / VIP / Other] Ticket Number: [Unique Ticket Number] QR Code: [QR Code for Scanning] Event Information: Lineup: [List of Artists Performing] Set Times: [Set Times for Artists] Special Instructions: [Any Special Instructions for Ticket Holders]</label>
       <textarea id="description" name="description"></textarea> 
 
       <label for="image">Image:</label>
@@ -123,7 +123,7 @@
       <label for="mediaAltURI">Media Alt URI:</label>
       <input type="text" id="mediaAltURI" value="string" name="mediaType"> -->
 
-      <button class="button button--issue" type="button" id="issue-button">Issue Ticket</button>
+      <button class="button button--issue" type="submit" id="issue-button">Issue Ticket</button>
     </form>
 
       </section>

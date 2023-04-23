@@ -13,7 +13,12 @@
 .is-hidden {
   display: none;
 }
-
+.is-selected {
+  background-color: var(--clr-navbar);
+  text-decoration: underline;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+}
 .is-invisible {
   opacity: 0;
 }
