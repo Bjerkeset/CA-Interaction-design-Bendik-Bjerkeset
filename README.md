@@ -54,7 +54,7 @@ npm install
 To run the app, run the following commands:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 ## Contact
