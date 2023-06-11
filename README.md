@@ -33,15 +33,15 @@ NOTE: For the most reliable experience, use the main user when logging in.
 
 ### Installing
 
-This is where you list how to get the project started. It typically just includes telling a person to clone the repo and then to install the dependencies e.g.
-
 1. Clone the repo:
 
 ```bash
 git clone git@github.com:Bjerkeset/CA-Interaction-design-Bendik-Bjerkeset
 ```
 
-2. cd vite-project
+```
+cd vite-project
+```
 
 3. Install the dependencies:
 
@@ -59,4 +59,4 @@ npm run start
 
 ## Contact
 
-[My Email](bendik.bjerkeset.dev)
+Email: bendik@bjerkeset.dev
