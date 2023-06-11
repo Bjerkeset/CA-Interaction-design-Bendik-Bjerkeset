@@ -1,27 +1,35 @@
-# Your project title
+# CA Interaction Design
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
-
-A simple overview of the use/purpose of the project.
+This assignment is part of the Noroff front-end studies curriculum, and it involves creating a website. The purpose of this project is to explore and leverage blockchain technology in developing a fully-functional ticketing system.
 
 ## Description
 
-Add a more detailed description of what your project entails and set out to do.
+### Report
 
-You can add some bullet points if you'd like to:
+During the last project, our primary focus was testing our JavaScript skills, resulting in the old site having a bare minimum of design features. Upon researching user behavior, I found that people quickly left the site due to its limited features and unappealing colors and structure.
 
-- List item 1
-- List item 2
-- List item 3
+For the new site, I began developing some of the features I envisioned it should have. These include an issue page where users can create a ticket for an event, a login page to store credentials and fetch an auth token, and a send functionality allowing users to send tickets to one another. I spent considerable time coding an exchange feature, only to discover a server-side issue specific to my account. Customer service has been notified and plans to resolve the issue within a week after my delivery. The updated styling has received better user feedback, as they can now explore features and navigate through pages more seamlessly, thanks to improved navigation. One area for improvement is communicating the site's purpose and goal to users, as some did not fully understand this.
+
+The site's purpose is to demonstrate a real-life use case for blockchain technology. A ticketing system serves as a good example, but the system is not limited to tickets alone. It can accommodate any form of digital certificate. The primary motivation for using such a system is data sovereignty and ownership. As the network validators (miners) monitor and secure transactions and issuance, there is no central authority controlling the legitimacy of the ticket state. In practical terms, this means that the ticket is controlled by whoever holds the private key to one's wallet, and users can transact tickets between them without involving the issuer. As long as the wallet provider can display a STAS token, the user can use the ticket without accessing this website.
+
+This solution has its limitations; users must store private keys themselves to avoid losing access. Additionally, purchasing and selling are currently only possible through cryptocurrency or another STAS token. This is impractical for ordinary users who prefer to pay in NOK or other widely-used currencies and who are not willing to risk losing their password.
 
 ## Built With
 
-You can list a the tech stack that you've used over here
+- [Relysia API](https://api.relysia.com/docs/static/index.html)
+- [Relysia SDK](https://docs.relysia.com/)
 
-- [React.js](https://reactjs.org/)
-- [Bootstrap](https://getbootstrap.com)
+## Live Site
+
+- [URL](https://gorgeous-paletas-3d837e.netlify.app/)
 
 ## Getting Started
+
+NOTE: The error when using the issue and offer endpoint is a server-side error that might be fixed after delivery date.
+
+NOTE: When you enter the site without auth token you will get auto rederected to the login page after 4 seconds.
+
+NOTE: For the most reliable experience, use the main user when logging in.
 
 ### Installing
 
@@ -30,10 +38,12 @@ This is where you list how to get the project started. It typically just include
 1. Clone the repo:
 
 ```bash
-git clone git@github.com:NoroffFEU/portfolio-1-example.git
+git clone git@github.com:Bjerkeset/CA-Interaction-design-Bendik-Bjerkeset
 ```
 
-2. Install the dependencies:
+2. cd vite-project
+
+3. Install the dependencies:
 
 ```
 npm install
@@ -41,30 +51,12 @@ npm install
 
 ### Running
 
-Here is where you detail how to run the app. It typically involves the commands you'd need to run to start the project e.g.
-
 To run the app, run the following commands:
 
 ```bash
 npm run start
 ```
 
-## Contributing
-
-Here you can detail any information you want to provide regarding contributing to the project. For big projects you will usually have a separate `CONTRIBUTING.md` and link to it, but for smaller projects you can simply include instructions here. These instructions can simply detail the process you want a person to take, such as to make sure to open a pull request so code can be reviewed.
-
 ## Contact
 
-This is where you can leave your social links for people to contact you, such as a LinkedIn profile or Twitter link e.g.
-
-[My Twitter page](www.twitter.com)
-
-[My LinkedIn page](www.linkedin.com)
-
-## License
-
-You can link to your license file here if you're using one, or mention what license the codebase falls under. If you're unsure then you can simply delete this section.
-
-## Acknowledgments
-
-This is where you can add any acknowledgements if you'd like, such as to people who have helped you or any code snippets you'd like to mention. You can delete this section if you don't have any acknowledgements to make.
+[My Email](bendik.bjerkeset.dev)
